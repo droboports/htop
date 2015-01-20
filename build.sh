@@ -46,6 +46,19 @@ _download_tgz() {
   return 0
 }
 
+# Download a TGZ file and unpack it, removing old files.
+# $1: file
+# $2: url
+# $3: folder
+_download_xz() {
+  [[ ! -d "download" ]]      && mkdir -p "download"
+  [[ ! -d "target" ]]        && mkdir -p "target"
+  [[ ! -f "download/${1}" ]] && wget -O "download/${1}" "${2}"
+  [[   -d "target/${3}" ]]   && rm -vfr "target/${3}"
+  [[ ! -d "target/${3}" ]]   && tar -Jxvf "download/${1}" -C target
+  return 0
+}
+
 # Download a DroboApp and unpack it, removing old files.
 # $1: file
 # $2: url
