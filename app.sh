@@ -7,7 +7,9 @@ local URL="http://ftp.gnu.org/gnu/ncurses/${FILE}"
 
 _download_tgz "${FILE}" "${URL}" "${FOLDER}"
 pushd target/"${FOLDER}"
-./configure --host="${HOST}" --prefix="${DEPS}" --libdir="${DEST}/lib" --datadir="${DEST}/share" --with-shared --enable-rpath --enable-widec
+./configure --host="${HOST}" --prefix="${DEPS}" \
+  --libdir="${DEST}/lib" --datadir="${DEST}/share" \
+  --with-shared --enable-rpath --enable-widec
 make
 make install
 rm -v "${DEST}/lib"/*.a
@@ -23,12 +25,13 @@ local URL="http://hisham.hm/htop/releases/${VERSION}/${FILE}"
 
 _download_tgz "${FILE}" "${URL}" "${FOLDER}"
 pushd target/"${FOLDER}"
-./configure --host="${HOST}" --prefix="${DEST}" --enable-unicode --disable-native-affinity \
- ac_cv_func_malloc_0_nonnull=yes \
- ac_cv_func_realloc_0_nonnull=yes \
- ac_cv_file__proc_stat=yes \
- ac_cv_file__proc_meminfo=yes 
-make clean
+./configure --host="${HOST}" --prefix="${DEST}" \
+  --mandir="${DEST}/man" \
+  --enable-unicode --disable-native-affinity \
+  ac_cv_func_malloc_0_nonnull=yes \
+  ac_cv_func_realloc_0_nonnull=yes \
+  ac_cv_file__proc_stat=yes \
+  ac_cv_file__proc_meminfo=yes
 make
 make install
 popd
