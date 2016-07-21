@@ -29,6 +29,8 @@ export DEPS="${PWD}/target/install"
 export CFLAGS="${CFLAGS:-} -Os -fPIC"
 export CXXFLAGS="${CXXFLAGS:-} ${CFLAGS}"
 export CPPFLAGS="-I${DEPS}/include"
+# NOTE: use the --verbose option when debugging library linking problems
+# export LDFLAGS="${LDFLAGS:-} -Wl,--verbose,-rpath,${DEST}/lib -L${DEST}/lib"
 export LDFLAGS="${LDFLAGS:-} -Wl,-rpath,${DEST}/lib -L${DEST}/lib"
 alias make="make -j4 V=1 VERBOSE=1"
 
