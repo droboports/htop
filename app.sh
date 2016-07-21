@@ -42,7 +42,7 @@ _download_tgz "${FILE}" "${URL}" "${FOLDER}"
 pushd target/"${FOLDER}"
 ./configure --host="${HOST}" --prefix="${DEST}" \
   --mandir="${DEST}/man" \
-  --enable-unicode --disable-native-affinity \
+  --enable-unicode \
   ac_cv_func_malloc_0_nonnull=yes \
   ac_cv_func_realloc_0_nonnull=yes \
   ac_cv_file__proc_stat=yes \
