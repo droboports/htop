@@ -18,7 +18,7 @@ popd
 
 ### HTOP ###
 _build_htop() {
-local VERSION="1.0.3"
+local VERSION="2.0.1"
 local FOLDER="htop-${VERSION}"
 local FILE="${FOLDER}.tar.gz"
 local URL="http://hisham.hm/htop/releases/${VERSION}/${FILE}"
