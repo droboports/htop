@@ -1,6 +1,6 @@
 ### NCURSES ###
 _build_ncurses() {
-local VERSION="5.9"
+local VERSION="6.0"
 local FOLDER="ncurses-${VERSION}"
 local FILE="${FOLDER}.tar.gz"
 local URL="http://ftp.gnu.org/gnu/ncurses/${FILE}"
@@ -33,13 +33,14 @@ popd
 
 ### HTOP ###
 _build_htop() {
-local VERSION="2.0.1"
+local VERSION="3.0.2"
 local FOLDER="htop-${VERSION}"
 local FILE="${FOLDER}.tar.gz"
-local URL="http://hisham.hm/htop/releases/${VERSION}/${FILE}"
+local URL="https://github.com/htop-dev/htop/archive/${VERSION}.tar.gz"
 
 _download_tgz "${FILE}" "${URL}" "${FOLDER}"
 pushd target/"${FOLDER}"
+./autogen.sh
 ./configure --host="${HOST}" --prefix="${DEST}" \
   --mandir="${DEST}/man" \
   --enable-unicode \
